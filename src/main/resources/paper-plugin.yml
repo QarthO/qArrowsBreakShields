@@ -1,0 +1,4 @@
+name: qArrowsDisableShields
+version: '${project.version}'
+main: gg.quartzdev.qarrowsdisablehields.qArrowsDisableShields
+api-version: '1.20'
