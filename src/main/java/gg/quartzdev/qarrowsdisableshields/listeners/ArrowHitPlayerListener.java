@@ -1,5 +1,7 @@
 package gg.quartzdev.qarrowsdisableshields.listeners;
 
+import gg.quartzdev.qarrowsdisableshields.qArrowsDisableShields;
+import org.bukkit.Bukkit;
 import org.bukkit.EntityEffect;
 import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
@@ -24,11 +26,15 @@ public class ArrowHitPlayerListener implements Listener {
         Player player = (Player) event.getHitEntity();
 //        Makes sure they're using a shield
         if(player.getActiveItem().getType() != Material.SHIELD) return;
-//        Applies the 5 second cooldown to the shield
-        player.setCooldown(Material.SHIELD, 20*5);
-//        Put's their shield down
-        player.clearActiveItem();
-//        Plays shield break effect
-        player.playEffect(EntityEffect.SHIELD_BREAK);
+
+//        Waits a tick to make sure the player blocks the first arrow
+        Bukkit.getScheduler().runTaskLater(qArrowsDisableShields.instance, () -> {
+//            Applies the 5 second cooldown to the shield
+            player.setCooldown(Material.SHIELD, 20*5);
+//            Put's their shield down
+            player.clearActiveItem();
+//            Plays shield break effect
+            player.playEffect(EntityEffect.SHIELD_BREAK);
+        }, 1);
     }
 }
