@@ -19,9 +19,13 @@ public class ArrowHitPlayerListener implements Listener {
 //        If the entity isn't a player
         if(!(event.getHitEntity() instanceof Player)) return;
 
-//        Get player
+//        Get the player who got hit by the arrow
         Player player = (Player) event.getHitEntity();
-//        Put shield on 5 second cooldown
+//        Makes sure they're using a shield
+        if(player.getActiveItem().getType() != Material.SHIELD) return;
+//        Applies the 5 second cooldown to the shield
         player.setCooldown(Material.SHIELD, 20*5);
+//        Put's their shield down
+        player.clearActiveItem();
     }
 }

@@ -3,6 +3,7 @@ package gg.quartzdev.qarrowsdisableshields;
 import gg.quartzdev.qarrowsdisableshields.listeners.ArrowHitPlayerListener;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
+import sun.security.jca.GetInstance;
 
 public final class qArrowsDisableShields extends JavaPlugin {
 
