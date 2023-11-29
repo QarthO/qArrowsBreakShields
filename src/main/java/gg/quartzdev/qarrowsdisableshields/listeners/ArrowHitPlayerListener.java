@@ -1,5 +1,6 @@
 package gg.quartzdev.qarrowsdisableshields.listeners;
 
+import org.bukkit.EntityEffect;
 import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
@@ -27,5 +28,7 @@ public class ArrowHitPlayerListener implements Listener {
         player.setCooldown(Material.SHIELD, 20*5);
 //        Put's their shield down
         player.clearActiveItem();
+//        Plays shield break effect
+        player.playEffect(EntityEffect.SHIELD_BREAK);
     }
 }
